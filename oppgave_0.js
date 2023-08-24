@@ -163,3 +163,35 @@ const handleDisable = ()=>{
 disableBtn.addEventListener("click",handleDisable);
 
 // Oppgave 8
+//get relevant html-elements first
+/*
+source for odd and even: https://www.w3schools.com/cssref/tryit.php?filename=trycss3_nth-child_odd_even 
+*/
+
+//we can easily get odd and even with querySelectAll
+const odd = document.querySelectorAll(".children li:nth-child(odd)");
+
+const even = document.querySelectorAll(".children li:nth-child(even)");
+
+const colorBtn = document.querySelector("#color");
+
+const handleColorChange =()=>{
+
+    for (let elem of odd) {
+        elem.style.display = "inline-block";
+        elem.style.border = "2px solid green";
+        elem.style.color = "red";
+        console.log(elem);
+    }
+
+    for (let elem of even) {
+        elem.style.display = "inline-block";
+        elem.style.border = "2px solid pink";
+        elem.style.color = "pink";
+        console.log(elem);
+    }
+}
+
+colorBtn.addEventListener("click",handleColorChange);
+
+
