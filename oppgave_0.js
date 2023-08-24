@@ -9,6 +9,7 @@ const removeFunction = ()=>{
 }
 
 //that was it
+//test git
 //event listener which triggers when remove button is clicked on
 removeBtn.addEventListener("click",removeFunction); 
 
