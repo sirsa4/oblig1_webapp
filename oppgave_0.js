@@ -37,8 +37,45 @@ const HandleInput = (e)=>{
 
 //event listner which gets user input from keyboard
 textInput.addEventListener("keypress",HandleInput);
+
 // Oppgave 4
 const myList = ["item one", "item two", "item three"];
+
+//first we the releveant html elements that need to be used
+const ul = document.querySelector("#ul");
+const listBtn = document.querySelector("#write-list");
+
+//function which handles writing list as li-elment in ul-elment in html. This can be done different ways. Here is two examples.
+
+//This function creates html string from looping the myList with map() and then using innerHTML attribute on ul-element. This way li-list is inserted as html dynamically with click.
+const handleWritingList = (e)=>{
+    const liList = myList.map(list=>{
+        return `<li>${list} </li>`;
+    });
+
+    ul.innerHTML = liList;
+}
+
+//In this function we map through myList array, create li-element inside the map in each iteration and append it the ul-element. Issue is here that there would be duplicate li-elements created each time button is clicked. This behaviour can be stopped running removeEventListiner() on listBtn after map() though.
+const handleWriteTwo = ()=>{
+
+myList.map(list=>{
+
+    let li = document.createElement("li");
+    li.innerHTML = list;
+
+    ul.appendChild(li); 
+    
+
+})
+
+//remove eventlistener from listBtn to avoid creating duplicates with each click. Event stops working after first click
+listBtn.removeEventListener("click",handleWriteTwo);
+
+}
+
+//click event which triggers when button is clicked to write the list
+listBtn.addEventListener("click",handleWriteTwo);
 // Oppgave 5
 // Oppgave 6
 // Oppgave 7
