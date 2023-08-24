@@ -76,7 +76,29 @@ listBtn.removeEventListener("click",handleWriteTwo);
 
 //click event which triggers when button is clicked to write the list
 listBtn.addEventListener("click",handleWriteTwo);
+
 // Oppgave 5
+//First we are the relevant html-elements
+const select = document.querySelector("#select");
+const selectInput = document.querySelector("#text");
+const selectBtn = document.querySelector("#create");
+const placeholder = document.querySelector("#placeholder");
+
+//function which handles creating a element from select options and appending the created to div with id "placeholder".
+const handleCreateElement = () =>{
+    //console.log(select.value);
+
+    
+    let element = document.createElement(select.value);
+
+    element.innerHTML = selectInput.value;
+
+    placeholder.appendChild(element);
+
+
+}
+
+selectBtn.addEventListener("click",handleCreateElement);
 // Oppgave 6
 // Oppgave 7
 // Oppgave 8
