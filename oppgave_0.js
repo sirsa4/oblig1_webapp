@@ -99,6 +99,50 @@ const handleCreateElement = () =>{
 }
 
 selectBtn.addEventListener("click",handleCreateElement);
+
 // Oppgave 6
+//first we again get html elements that need to be worked with
+//All li-element in ul can stored in variable as array items with Array.from() method.
+//this way we can remove
+const liList = Array.from(document.querySelectorAll("#list li"));
+const ulList = document.querySelector("#list");
+const removeListBtn = document.querySelector("#remove-li");
+
+const handleRemoveList = ()=>{
+    
+    /*console.log("before: ");
+    console.log(liList);
+    */
+    
+    //remove last element from array
+    liList.pop();
+
+    //then clear all li-elments in ul-tag
+    //this way we can rewrite again ul-tag the li-elements without the last element which was removed with pop() method above
+    ulList.innerHTML = "";
+    
+    /*finally map through the li-list and insert new array in ul. This will missing -1 li-element with
+    each button click untill nothing is left on list
+    */
+    liList.map(list=>{
+        //found textcontent property storing li-text from console.log
+       // console.log(list.textContent);
+        let liElement = document.createElement("li");
+
+        liElement.innerHTML = list.textContent;
+
+        ulList.appendChild(liElement);
+    });
+
+    
+
+    /*
+    console.log("after");
+    console.log(liList);
+    */
+
+}
+
+removeListBtn.addEventListener("click",handleRemoveList);
 // Oppgave 7
 // Oppgave 8
