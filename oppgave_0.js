@@ -145,4 +145,21 @@ const handleRemoveList = ()=>{
 
 removeListBtn.addEventListener("click",handleRemoveList);
 // Oppgave 7
+//as usual get html elements that need to be manipulated
+const inputDisable = document.querySelector("#name");
+const disableBtn = document.querySelector("#order");
+
+/*
+This function turns the button's border color to red and also disables the button so it can't be clicked on again
+*/
+const handleDisable = ()=>{
+    //console.log(inputDisable.value);
+    if(inputDisable.value.length > 4){
+        disableBtn.style.borderColor = "red";
+        disableBtn.setAttribute("disabled",true);
+    }
+}
+
+disableBtn.addEventListener("click",handleDisable);
+
 // Oppgave 8
