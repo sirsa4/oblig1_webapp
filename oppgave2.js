@@ -15,8 +15,21 @@ const users = [
   console.log("hii");
   
   // TODO: Hent HTML #id med getElementById
-  
+  const nameInput = document.getElementById("name");
+  const ageInput = document.getElementById("age");
+  const filterBtn = document.getElementById("filter");
+  const usersUl = document.getElementById("users");
+
   // TODO: Lag en funksjon som kan brukes til å skrive ut HTMLen for å se brukerene. Du kan bruke users importert over for å hente en liste med 10 brukere
+  const writeUser = ()=>{
+    users.map(user=>{
+      const {id, name, age} = user;
+      let li = document.createElement("li");
+      li.innerHTML = `ID: ${id} - Name: ${name} - Age: ${age}`;
+      usersUl.appendChild(li);
+    })
+  }
+  writeUser();
   // TODO: Lag en funksjon som håndterer søket og oppdaterer grensesnittet med resultatet fra søket
   // TODO: Lag en funksjon som håndterer filteret og oppdaterer grensesnittet med resultatet fra filteret
   // TODO: Lytt til tastatur klikk på søkefeltet, den skal trigge søkefunksjonen (handleSearch)
