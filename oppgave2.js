@@ -31,7 +31,26 @@ const users = [
   }
   writeUser();
   // TODO: Lag en funksjon som håndterer søket og oppdaterer grensesnittet med resultatet fra søket
+  
+  const handleSearch = (e)=>{
+    //clear users ul-element first
+    usersUl.innerHTML = '';
+
+    //then filter users array and users who name includes words from user input field.
+    //This returns an array which can itered through again and written to html 
+    let usersFound = users.filter(user=>user.name.toLowerCase().includes(e.target.value.toLowerCase()));
+
+    //filtered user list can be written to html same way as handleSearch() function above.
+    //this can also be done executing function here with filtered array as argument.
+    usersFound.map(user=>{
+      const {id, name, age} = user;
+      let li = document.createElement("li");
+      li.innerHTML = `ID: ${id} - Name: ${name} - Age: ${age}`;
+      usersUl.appendChild(li);
+    })
+  }
   // TODO: Lag en funksjon som håndterer filteret og oppdaterer grensesnittet med resultatet fra filteret
   // TODO: Lytt til tastatur klikk på søkefeltet, den skal trigge søkefunksjonen (handleSearch)
+  nameInput.addEventListener("keypress",handleSearch);
   // TODO: Lytt til klikk på filter-knappen, den skal trigge filterfunksjonen (handleFilter)
   
