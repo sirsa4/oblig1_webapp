@@ -12,7 +12,6 @@ const users = [
     { id: 10, name: "Morgan", age: 87 }
   ];
 
-  console.log("hii");
   
   // TODO: Hent HTML #id med getElementById
   const nameInput = document.getElementById("name");
@@ -50,7 +49,25 @@ const users = [
     })
   }
   // TODO: Lag en funksjon som håndterer filteret og oppdaterer grensesnittet med resultatet fra filteret
+  //funksjonalitet i den er ganske lik searchHandle function
+  const handleFilter = () =>{
+
+    usersUl.innerHTML = "";
+
+    let age = ageInput.value;
+    let usersByAge = users.filter(user=>user.age >= age);
+    
+    usersByAge.map(user=>{
+      const {id, name, age} = user;
+      let li = document.createElement("li");
+      li.innerHTML = `ID: ${id} - Name: ${name} - Age: ${age}`;
+      usersUl.appendChild(li);
+    });
+  }
   // TODO: Lytt til tastatur klikk på søkefeltet, den skal trigge søkefunksjonen (handleSearch)
   nameInput.addEventListener("keypress",handleSearch);
   // TODO: Lytt til klikk på filter-knappen, den skal trigge filterfunksjonen (handleFilter)
+  filterBtn.addEventListener("click",handleFilter);
+  
+
   
